@@ -3,9 +3,7 @@
     margin: 0;
 }
 
-html {
 
-}
 
 body {
     margin: 0 auto;
@@ -17,9 +15,7 @@ body {
 
 }
 
-main{
 
-}
 h1, h2, h3 {
     margin: 0;
 }
@@ -182,6 +178,7 @@ div.search-bar button {
     flex-direction: column;
     justify-content: space-between;
     padding: 1em 0;
+    width: 100%;
 }
 
 .movie-title {
