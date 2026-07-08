@@ -6,11 +6,21 @@ export function addToLocalStorage(movie) {
     m => m.imdbID === movie.imdbID
   );
   if (alreadyExists) {
-    alert(`${movie.Title} is already in your watchlist!`);
+    addToWatchlistBtns.forEach(btn => {
+      if (btn.dataset.id === movie.imdbID) {
+        btn.textContent = 'Added';
+        btn.disabled = true;
+      }
+    });
   } else {
     toWatchMovies.push(movie);
     localStorage.setItem('movieList', JSON.stringify(toWatchMovies))
-    alert(`${movie.Title} has been added to your watchlist!`);
+    addToWatchlistBtns.forEach(btn => {
+      if (btn.dataset.id === movie.imdbID) {
+        btn.textContent = 'Added';
+        btn.disabled = true;
+      }
+    });
   }
 }
 

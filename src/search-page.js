@@ -5,6 +5,7 @@ const searchInput = document.querySelector('.search-form input');
 const searchBtn = document.getElementById('search-btn');
 const resultsContainer = document.querySelector('.results-container');
 const messageContainer = document.querySelector('.message-container');
+const addToWatchlistBtns = document.querySelectorAll('.add-to-watchlist-btn');
 
 let currentMovies = [];
 
