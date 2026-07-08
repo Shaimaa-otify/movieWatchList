@@ -62,7 +62,7 @@ function showResults(data) {
         return ` <div class= "movie-card"> 
               <img src="${movie.Poster !== 'N/A' ? movie.Poster : 'assets/placeholder.jpg'}" 
                   alt="${movie.Title} poster" class="movie-poster" 
-                  onerror="src='placeholder.jpg'" 
+                  onerror="src='assets/placeholder.jpg'" 
                   />
               <div class="movie-info">
                 <p class="movie-title">${movie.Title} <span class="movie-rating">${movie.imdbRating}</span></p>

@@ -8,10 +8,12 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: 0 auto;
     background-color: white;
     color: #333;
     font-family: "Inter", sans-serif;
+    width: 90%;
+    max-width: 800px;
 
 }
 
@@ -32,7 +34,7 @@ button {
 }
 
 header {
-    background-image: url(header.png);
+    background-image: url(../assets/header.png);
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
@@ -172,6 +174,7 @@ div.search-bar button {
 
 .movie-card img {
     width: 97px;
+    border-radius: 15px;
 }
 
 .movie-info {
@@ -192,7 +195,7 @@ div.search-bar button {
 }
 
 .movie-title span::before {
-    content: url(Icon.png);
+    content: url(../assets/Icon.png);
     margin-left: 8px;
     margin-right: 3px;
 }
@@ -248,11 +251,11 @@ div.search-bar button {
 }
 
 .remove-from-watchlist-btn::before{
-    background-image: url(minus_2.png);
+    background-image: url(../assets/minus_2.png);
 }
 
 .add-to-watchlist-btn::before {
-    background-image: url(plus_2.png);  
+    background-image: url(../assets/plus_2.png);
    
      
  }

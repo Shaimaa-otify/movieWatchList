@@ -5,9 +5,12 @@ export function addToLocalStorage(movie) {
   const alreadyExists = toWatchMovies.some(
     m => m.imdbID === movie.imdbID
   );
-  if (!alreadyExists) {
+  if (alreadyExists) {
+    alert(`${movie.Title} is already in your watchlist!`);
+  } else {
     toWatchMovies.push(movie);
     localStorage.setItem('movieList', JSON.stringify(toWatchMovies))
+    alert(`${movie.Title} has been added to your watchlist!`);
   }
 }
 

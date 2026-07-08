@@ -31,6 +31,7 @@ A browser-based movie search and watchlist app powered by the OMDB API.
 - **Add to watchlist** — save movies to your watchlist with a single click
 - **Persistent watchlist** — watchlist is saved in localStorage and survives page refreshes
 - **Remove from watchlist** — remove movies from your watchlist on the watchlist page
+- **Secure API calls** — OMDB requests are proxied through Netlify serverless functions, keeping the API key out of client-side code
 - **Responsive design** — works on desktop and mobile browsers
 
 ---
@@ -85,13 +86,28 @@ A browser-based movie search and watchlist app powered by the OMDB API.
 
 ```
 movieWatchList/
-├── index.html          # Search page markup
-├── watchlist.html      # Watchlist page markup
-├── index.css           # Styles & responsive layout
-├── api.js              # OMDB API fetch helpers
-├── search-page.js      # Search logic & result rendering
-├── watchlist-page.js   # Watchlist rendering & removal logic
-├── storage.js          # localStorage helpers
+├── assets/                  # Static images
+│   ├── header.png
+│   ├── Icon.png
+│   ├── minus_2.png
+│   ├── no-data-initial.png
+│   ├── placeholder.jpg
+│   ├── plus_2.png
+│   └── search_2.png
+├── netlify/
+│   └── functions/
+│       ├── details.js       # Serverless proxy — OMDB detail lookups
+│       └── search.js        # Serverless proxy — OMDB search
+├── src/
+│   ├── api.js               # Shared fetch helpers
+│   ├── search-page.js       # Search logic & result rendering
+│   ├── storage.js           # localStorage helpers
+│   └── watchlist-page.js    # Watchlist rendering & removal logic
+├── styles/
+│   └── index.css            # Styles & responsive layout
+├── index.html               # Search page
+├── watchlist.html           # Watchlist page
+├── netlify.toml             # Netlify build & functions config
 └── README.md
 ```
 
