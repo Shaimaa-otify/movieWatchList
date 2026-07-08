@@ -2,26 +2,16 @@
 
 export function addToLocalStorage(movie) {
   const toWatchMovies = JSON.parse(localStorage.getItem('movieList')) || [];
-  const alreadyExists = toWatchMovies.some(
-    m => m.imdbID === movie.imdbID
-  );
-  if (alreadyExists) {
-    addToWatchlistBtns.forEach(btn => {
-      if (btn.dataset.id === movie.imdbID) {
-        btn.textContent = 'Added';
-        btn.disabled = true;
-      }
-    });
-  } else {
+  const alreadyExists = toWatchMovies.some(m => m.imdbID === movie.imdbID);
+  if (!alreadyExists) {
     toWatchMovies.push(movie);
-    localStorage.setItem('movieList', JSON.stringify(toWatchMovies))
-    addToWatchlistBtns.forEach(btn => {
-      if (btn.dataset.id === movie.imdbID) {
-        btn.textContent = 'Added';
-        btn.disabled = true;
-      }
-    });
+    localStorage.setItem('movieList', JSON.stringify(toWatchMovies));
   }
+}
+
+export function isInWatchlist(imdbID) {
+  const toWatchMovies = JSON.parse(localStorage.getItem('movieList')) || [];
+  return toWatchMovies.some(m => m.imdbID === imdbID);
 }
 
 export function getWatchlist() {

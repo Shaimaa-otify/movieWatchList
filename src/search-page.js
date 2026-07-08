@@ -1,12 +1,10 @@
 import { fetchDataFromApi, fetchMovieDetails } from './api.js';
-import { addToLocalStorage } from './storage.js';
+import { addToLocalStorage, isInWatchlist } from './storage.js';
 
 const searchInput = document.querySelector('.search-form input');
 const searchBtn = document.getElementById('search-btn');
 const resultsContainer = document.querySelector('.results-container');
 const messageContainer = document.querySelector('.message-container');
-const addToWatchlistBtns = document.querySelectorAll('.add-to-watchlist-btn');
-
 let currentMovies = [];
 
 function storeSearchResult(data) {
@@ -23,6 +21,8 @@ document.addEventListener('click', function (e) {
 
   if (movie) {
     addToLocalStorage(movie);
+    e.target.textContent = 'Added';
+    e.target.disabled = true;
   }
 });
 
@@ -70,7 +70,7 @@ function showResults(data) {
                 <div class="movie-data">
                   <p class="movie-year">${movie.Runtime}</p>
                   <p class="movie-genre">${movie.Genre}</p>
-                  <button id="add-btn" data-id="${movie.imdbID}"class="add-to-watchlist-btn">Watchlist</button>
+                  <button data-id="${movie.imdbID}" class="add-to-watchlist-btn" ${isInWatchlist(movie.imdbID) ? 'disabled' : ''}>${isInWatchlist(movie.imdbID) ? 'Added' : 'Watchlist'}</button>
                 </div>
                 <p class="movie-description">${movie.Plot}</p>
               </div>
