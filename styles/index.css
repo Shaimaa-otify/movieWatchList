@@ -222,7 +222,8 @@ div.search-bar button {
     cursor: pointer; /* Change cursor on hover */
     font-size: 12px;
     display: flex;
-    align-items: center;  
+    align-items: center;
+    margin-left: auto;
     border: none;
 }
 
