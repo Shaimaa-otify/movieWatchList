@@ -15,17 +15,12 @@ export async function fetchDataFromApi(url) {
 
 export async function fetchMovieDetails(movieList) {
   try {
-    const detailedMovies = await Promise.all(
-      movieList.map(async (movie) => {
-        const response = await fetch(`https://www.omdbapi.com/?apikey=d9e7264&i=${movie.imdbID}`);
-        if (!response.ok) {
-          throw new Error(`error status ${response.status}`);
-        }
-        return response.json();
-      })
-    );
-
-    return detailedMovies;
+    const ids = movieList.map(movie => movie.imdbID).join(',');
+    const response = await fetch(`/.netlify/functions/details?ids=${ids}`);
+    if (!response.ok) {
+      throw new Error(`error status ${response.status}`);
+    }
+    return response.json();
   } catch (error) {
     console.error(error);
   }

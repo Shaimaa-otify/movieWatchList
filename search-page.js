@@ -34,7 +34,7 @@ searchBtn.addEventListener('click', async (event) => {
     searchBtn.textContent = 'Searching...';
     try {
       const fetchedData = await fetchDataFromApi(
-        `https://www.omdbapi.com/?apikey=d9e7264&s=${encodeURIComponent(query)}`
+        `/.netlify/functions/search?q=${encodeURIComponent(query)}`
       );
 
       if (!fetchedData) return;
