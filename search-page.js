@@ -34,7 +34,7 @@ searchBtn.addEventListener('click', async (event) => {
     searchBtn.textContent = 'Searching...';
     try {
       const fetchedData = await fetchDataFromApi(
-        `http://www.omdbapi.com/?apikey=d9e7264&s=${encodeURIComponent(query)}`
+        `https://www.omdbapi.com/?apikey=d9e7264&s=${encodeURIComponent(query)}`
       );
 
       if (!fetchedData) return;
