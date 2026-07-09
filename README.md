@@ -38,7 +38,7 @@ A browser-based movie search and watchlist app powered by the OMDB API.
 
 ## Demo
 
-> Open `index.html` directly in your browser — no build step or server required.
+> Live on Netlify. For local development, run via the Netlify CLI (see [Getting Started](#getting-started)) — opening `index.html` directly won't work as the API calls require serverless functions.
 
 ---
 
@@ -53,22 +53,32 @@ A browser-based movie search and watchlist app powered by the OMDB API.
 ### Prerequisites
 
 - A modern web browser (Chrome, Firefox, Edge, Safari)
-- No Node.js, package manager, or server needed
+- [Node.js](https://nodejs.org/) (for running Netlify CLI locally)
+- [Netlify CLI](https://docs.netlify.com/cli/get-started/) — install once globally:
+  ```bash
+  npm install -g netlify-cli
+  ```
 
 ### Installation
 
-1. Clone or download this repository:
+1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/movieWatchList.git
-   ```
-2. Open the project folder:
-   ```bash
    cd movieWatchList
    ```
-3. Open `index.html` in your browser:
-   - Double-click the file, **or**
-   - Drag it into an open browser window, **or**
-   - Use a local server extension (e.g. VS Code Live Server)
+2. Create a `.env` file in the project root with your OMDB API key:
+   ```
+   OMDB_API_KEY=your_api_key_here
+   ```
+3. Log in to Netlify CLI (once):
+   ```bash
+   netlify login
+   ```
+4. Start the local dev server:
+   ```bash
+   netlify dev
+   ```
+   The app will be available at `http://localhost:8888`. The CLI reads `.env` and injects the API key into the serverless functions automatically.
 
 ---
 
@@ -108,6 +118,8 @@ movieWatchList/
 ├── index.html               # Search page
 ├── watchlist.html           # Watchlist page
 ├── netlify.toml             # Netlify build & functions config
+├── .env                     # Local environment variables (not committed)
+├── .gitignore
 └── README.md
 ```
 
@@ -121,6 +133,7 @@ movieWatchList/
 | CSS3 | Styling & responsive layout |
 | JavaScript (ES6+) | DOM manipulation, fetch, modules |
 | [OMDB API](https://www.omdbapi.com/) | Movie data |
+| [Netlify Functions](https://docs.netlify.com/functions/overview/) | Serverless API proxy (hides API key) |
 | localStorage | Persistent watchlist storage |
 
 ---
